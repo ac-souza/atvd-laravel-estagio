@@ -5,9 +5,9 @@
     <title>SisVeículos</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image" href="../../assets/img/car_list.png">
-    <link href="../../assets/vendor/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/login.css">
+    <link rel="icon" type="image" href='/img/car_list.png'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
@@ -35,13 +35,18 @@
                                     <div class="auth-title" style="font-weight: bold; font-size: 1.2rem;">Entrar</div>
                                     <div class="auth-subtitle" style="font-size: 0.85rem; color: #6c757d; margin-bottom: 10px;">Acesse sua conta e gerencie seus veículos</div>
                                 </div>
+                                @if(session('erro'))
+                                <div class="alert alert-danger" style="font-size: 0.8rem; padding: 5px;">
+                                    {{ session('erro') }}
+                                </div>
+                                @endif
 
                                 <p class="switch-form" style="font-size: 0.9rem;">
-                                    Não tem uma conta? <a id="tnb-login-dropdown-signup-link" href="?page=users_signup" style="color: #0d6efd; text-decoration: none;">Cadastre-se</a>
+                                    Não tem uma conta? <a id="tnb-login-dropdown-signup-link" href="{{ route('cadastro') }}" style="color: #0d6efd; text-decoration: none;">Cadastre-se</a>
                                 </p>
 
-                                <form action="?page=authenticator" method="post" id="loginFormElement">
-                                    <input type="hidden" name="action" value="logar">
+                                <form action="{{ route('logar') }}" method="post" id="loginFormElement">
+                                    @csrf
                                     <div class="form-group mb-3">
                                         <input
                                             type="text"
@@ -69,6 +74,8 @@
                                         <span class="button-loader"></span>
                                     </button>
                                 </form>
+
+                                <!-- O link de cadastro também muda para a rota -->
                             </div>
                         </div>
                     </li>
@@ -94,8 +101,8 @@
         </button>
     </div>
 
-    <script src="../../assets/vendor/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/js/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('js/login.js') }}"></script>
 
 </body>
 

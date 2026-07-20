@@ -4,11 +4,11 @@
 <head>
   <title>Cadastro</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image" href="../../assets/img/car_list.png">
-  <link href="../../assets/vendor/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../../assets/css/users_signup.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image" href='/img/car_list.png'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/users_signup.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
@@ -21,7 +21,7 @@
     <div class="container-fluid">
       <a class="navbar-brand d-inline-flex align-items-center" href="#">
 
-        <span class="navbar-logo"></span>
+        <img class="navbar-logo"></img>
 
         <span class="fs-4">SisVeículos</span>
       </a>
@@ -36,8 +36,8 @@
           <div class="card p-4">
             <h2 class="card-title">Cadastre seu usuário SisVeículos</h2>
 
-            <form action="?page=save_users" method="post" id="signupFormElement">
-              <input type="hidden" name="action" value="register">
+            <form action="{{ route('cadastrar') }}" method="post" id="signupFormElement">
+              @csrf
               <div class="form-group">
                 <input
                   type="text"
@@ -92,7 +92,7 @@
       </div>
     </div>
   </div>
-  <script src="../../assets/vendor/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../../assets/js/users_signup.js"></script>
 
 </body>
