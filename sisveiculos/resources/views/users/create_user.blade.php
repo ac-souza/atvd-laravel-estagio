@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8">
+    <title>@yield('titulo', 'Novo Usuário') - SisVeículos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image" href='/img/car_list.png'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -16,6 +17,17 @@
             overflow: hidden !important;
         }
     </style>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand d-inline-flex align-items-center" href="#">
+
+        <img class="navbar-logo"></img>
+
+        <span class="fs-4">SisVeículos</span>
+      </a>
+
+    </div>
+  </nav>
     <div class="main-content">
         <div class="container mt-5">
             <div class="row justify-content-center">
@@ -23,8 +35,8 @@
                     <div class="card p-4 d-inline-flex align-items-center">
                         <h2 class="card-title">Cadastre seu novo usuário</h2>
 
-                        <form action="?page=save_new_user" method="post" id="signupFormElement">
-                            <input type="hidden" name="action" value="register">
+                        <form action=" {{ route('usuarios.store')}} " method="post" id="signupFormElement">
+                            @csrf
                             <div class="form-group">
                                 <label>Seu nome</label>
                                 <input
@@ -69,7 +81,7 @@
                                 <span class="button-loader"></span>
                             </button>
                             <p class="switch-form" style="font-size: 0.9rem; margin-top: 10px;">
-                                <a id="tnb-login-dropdown-signup-link" href="?page=home&aba=config_users" style="color: #fd0d0d; text-decoration: none;">Cancelar cadastro</a>
+                                <a id="tnb-login-dropdown-signup-link" href="{{ route('usuarios.index') }}" style="color: #fd0d0d; text-decoration: none;">Cancelar cadastro</a>
                             </p>
                         </form>
                     </div>
@@ -77,8 +89,7 @@
             </div>
         </div>
     </div>
-    <script src="../../assets/vendor/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/js/users-signup.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

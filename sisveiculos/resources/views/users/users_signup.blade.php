@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-  <title>Cadastro</title>
+  <title>@yield('titulo', 'Cadastro') - SisVeículos</title>
   <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image" href='/img/car_list.png'>
@@ -19,7 +19,7 @@
   </style>
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <div class="container-fluid">
-      <a class="navbar-brand d-inline-flex align-items-center" href="#">
+      <a class="navbar-brand d-inline-flex align-items-center">
 
         <img class="navbar-logo"></img>
 
@@ -79,7 +79,7 @@
                   required>
               </div>
               <p class="switch-form" style="font-size: 0.9rem; margin-top: 10px;">
-                Já possui uma conta? <a id="tnb-login-dropdown-signup-link" href="?page=login" style="color: #0d6efd; text-decoration: none;">Entrar</a>
+                Já possui uma conta? <a id="tnb-login-dropdown-signup-link" href="{{ route('login') }}" style="color: #0d6efd; text-decoration: none;">Entrar</a>
               </p>
               <div id="signupStatus" class="status"></div>
               <button type="submit">

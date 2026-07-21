@@ -15,7 +15,7 @@
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand d-inline-flex align-items-center" href="#">
+            <a class="navbar-brand d-inline-flex align-items-center">
                 <img class="navbar-logo"></img>
                 <span class="fs-4">SisVeículos</span>
             </a>

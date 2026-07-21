@@ -4,33 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../../assets/vendor/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/edit_users.css">
+    <title>@yield('titulo', 'Editar Usuário') - SisVeículos</title>
+    <link rel="icon" type="image" href='/img/car_list.png'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('edit_users.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand d-inline-flex align-items-center">
+
+        <img class="navbar-logo"></img>
+
+        <span class="fs-4">SisVeículos</span>
+      </a>
+
+    </div>
+  </nav>
     <div class="main-content">
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-6 d-flex justify-content-center">
                     <div class="card p-4 d-inline-flex align-items-center">
                         <h1>Editar Usuário</h1>
-                        <?php
-
-                        $sql = "SELECT * FROM usuarios WHERE id = " . $_REQUEST['id'];
-                        $res = $conn->query($sql);
-                        $row = $res->fetch_object();
-                        ?>
-                        <form action="?page=save_users" method="post" id="signupFormElement">
-                            <input type="hidden" name="action" value="editar">
-                            <input type="hidden" name="id" value="<?php echo $row->id; ?>">
+                        <form action="{{ route('usuarios.update') }}" method="post" id="signupFormElement">
+                            @csrf
                             <div class="form-group">
                                 <label>Editar nome</label>
                                 <input
                                     type="text"
                                     name="nome"
-                                    value="<?php echo $row->nome; ?>"
                                     autocomplete="username"
                                     spellcheck="false"
                                     autocapitalize="off"
@@ -42,7 +47,6 @@
                                 <input
                                     type="text"
                                     name="login"
-                                    value="<?php echo $row->login; ?>"
                                     autocomplete="username"
                                     spellcheck="false"
                                     autocapitalize="off"
@@ -55,7 +59,6 @@
                                 <input
                                     type="email"
                                     name="email"
-                                    value="<?php echo $row->email; ?>"
                                     autocomplete="email"
                                     spellcheck="false"
                                     autocapitalize="off"
@@ -78,7 +81,7 @@
                                 <span class="button-loader"></span>
                             </button>
                             <p class="switch-form" style="font-size: 0.9rem; margin-top: 10px;">
-                                <a id="tnb-login-dropdown-signup-link" href="?page=home&aba=config_users" style="color: #fd0d0d; text-decoration: none;">Cancelar edição</a>
+                                <a id="tnb-login-dropdown-signup-link" href="{{ route('usuarios.index') }}" style="color: #fd0d0d; text-decoration: none;">Cancelar edição</a>
                             </p>
                         </form>
                     </div>

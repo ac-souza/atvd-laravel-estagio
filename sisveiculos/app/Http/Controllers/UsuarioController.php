@@ -9,7 +9,7 @@ class UsuarioController extends Controller
     // Método para exibir a tela de cadastro (que chamamos no passo anterior)
     public function telaCadastro()
     {
-        return view('auth.signup');
+        return view('users.users_signup');
     }
 
     // ➔ EQUIVALENTE AO CASE 'register'
@@ -20,7 +20,7 @@ class UsuarioController extends Controller
         $email = $request->input("email");
         $senha = $request->input("senha");
 
-        $salvou = DB::insert("INSERT INTO usuarios (nome, login, email, senha) VALUES (?, ?, ?, ?)", [$nome, $login, $email, $senha]);
+        $salvou = DB::insert("INSERT INTO usuarios (nome, login, email, senha, status) VALUES (?, ?, ?, ?, 0)", [$nome, $login, $email, $senha]);
 
         if ($salvou) {
             // with() substitui o seu <script>alert(...)</script>
@@ -57,6 +57,40 @@ class UsuarioController extends Controller
             return redirect()->route('usuarios.index')->with('mensagem', 'Usuário excluído com sucesso!');
         } else {
             return redirect()->route('usuarios.index')->with('erro', 'Não foi possível excluir o usuário!');
+        }
+    }
+    public function index()
+    {
+        // O equivalente ao seu: $sql = "SELECT * FROM usuarios"; $res = $conn->query($sql);
+        $usuarios = DB::select("SELECT * FROM usuarios");
+        
+        // Retorna a view e passa a variável $usuarios para ela
+        return view('users.list_users', ['usuarios' => $usuarios]);
+        }
+    // ➔ ABRE A TELA DE CADASTRAR NOVO USUÁRIO PELO PAINEL
+    public function create()
+    {
+        // Vai procurar o arquivo em resources/views/usuarios/create.blade.php
+        return view('users.create_user'); 
+    }
+
+    // ➔ RECEBE OS DADOS, SALVA NO BANCO E VOLTA PRA LISTA (A rota usuarios.store)
+    public function store(Request $request)
+    {
+        $nome = $request->input("nome");
+        $login = $request->input("login");
+        $email = $request->input("email");
+        $senha = $request->input("senha");
+        // Nota: Você pode querer adicionar o 'status' aqui também, dependendo da sua tabela
+
+        $salvou = DB::insert("INSERT INTO usuarios (nome, login, email, senha, status) VALUES (?, ?, ?, ?, 0)", [$nome, $login, $email, $senha]);
+
+        if ($salvou) {
+            // AQUI ESTÁ A MÁGICA: Redireciona de volta para a lista de usuários!
+            return redirect()->route('usuarios.index')->with('mensagem', 'Usuário cadastrado com sucesso!');
+        } else {
+            // Se der erro, volta para a tela do formulário (create)
+            return redirect()->route('usuarios.create')->with('erro', 'Não foi possível cadastrar o usuário!');
         }
     }
 }
