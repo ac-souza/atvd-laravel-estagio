@@ -75,7 +75,6 @@
                                     </button>
                                 </form>
 
-                                <!-- O link de cadastro também muda para a rota -->
                             </div>
                         </div>
                     </li>

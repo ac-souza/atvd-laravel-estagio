@@ -7,32 +7,32 @@
     <title>@yield('titulo', 'Editar Usuário') - SisVeículos</title>
     <link rel="icon" type="image" href='/img/car_list.png'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('edit_users.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/edit_users.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand d-inline-flex align-items-center">
+        <div class="container-fluid">
+            <a class="navbar-brand d-inline-flex align-items-center">
 
-        <img class="navbar-logo"></img>
+                <img class="navbar-logo"></img>
 
-        <span class="fs-4">SisVeículos</span>
-      </a>
+                <span class="fs-4">SisVeículos</span>
+            </a>
 
-    </div>
-  </nav>
+        </div>
+    </nav>
     <div class="main-content">
         <div class="container mt-5">
             <div class="row justify-content-center">
-                <div class="col-md-6 d-flex justify-content-center">
-                    <div class="card p-4 d-inline-flex align-items-center">
+                <div class="col-md-6">
+                    <div class="card p-4">
                         <h1>Editar Usuário</h1>
-                        <form action="{{ route('usuarios.update') }}" method="post" id="signupFormElement">
+                        <form action="{{ route('usuarios.update') }}" method="post" id="signupFormElement" class="w-100">
                             @csrf
+                            <input type="hidden" name="id" value="{{ $usuario->id }}">
                             <div class="form-group">
-                                <label>Editar nome</label>
                                 <input
                                     type="text"
                                     name="nome"
@@ -43,7 +43,6 @@
                                     required>
                             </div>
                             <div class="form-group">
-                                <label>Editar login</label>
                                 <input
                                     type="text"
                                     name="login"
@@ -55,7 +54,6 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Editar email</label>
                                 <input
                                     type="email"
                                     name="email"
@@ -67,12 +65,11 @@
                             </div>
 
                             <div class="form-group tnb-signup-password" style="position: relative;">
-                                <label>Digite sua senha atual</label>
                                 <input
                                     type="password"
                                     name="senha" id="tnb-signup-password"
                                     autocomplete="current-password"
-                                    placeholder="Senha"
+                                    placeholder="Digite sua senha atual"
                                     required>
                             </div>
                             <div id="signupStatus" class="status"></div>
@@ -81,7 +78,7 @@
                                 <span class="button-loader"></span>
                             </button>
                             <p class="switch-form" style="font-size: 0.9rem; margin-top: 10px;">
-                                <a id="tnb-login-dropdown-signup-link" href="{{ route('usuarios.index') }}" style="color: #fd0d0d; text-decoration: none;">Cancelar edição</a>
+                                <a id="tnb-login-dropdown-signup-link" href="{{ route('listarUsuarios') }}" style="color: #fd0d0d; text-decoration: none;">Cancelar edição</a>
                             </p>
                         </form>
                     </div>

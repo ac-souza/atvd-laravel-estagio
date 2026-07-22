@@ -2,11 +2,12 @@
 <html lang="pt-br">
 
 <head>
+    <title>@yield('titulo', 'Editar Modelo') - SisVeículos</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image" href="../../assets/img/car_list.png">
-    <link href="../../assets/vendor/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/model-signup.css">
+    <link rel="icon" type="image" href='/img/car_list.png'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/model_signup.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
@@ -16,31 +17,34 @@
             overflow: hidden !important;
         }
     </style>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand d-inline-flex align-items-center">
+
+                <img class="navbar-logo"></img>
+
+                <span class="fs-4">SisVeículos</span>
+            </a>
+
+        </div>
+    </nav>
     <div class="main-content">
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-6 d-flex justify-content-center">
                     <div class="card p-4 d-inline-flex align-items-center">
                         <h2 class="card-title">Editar modelo do veículo</h2>
-
-                        <?php
-
-                        $sql = "SELECT * FROM modelos WHERE id = " . $_REQUEST['id'];
-                        $res = $conn->query($sql);
-                        $row = $res->fetch_object();
-                        ?>
-                        <form action="?page=save_models" method="post" id="signupFormElement">
-                            <input type="hidden" name="action" value="editar">
-                            <input type="hidden" name="id" value="<?php echo $row->id; ?>">
+                        <form action="{{ route('modelos.update') }}" method="post" id="signupFormElement">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $modelo->id }}">
                             <div class="form-group">
                                 <label>Editar marca</label>
                                 <input
                                     type="text"
                                     name="marca" id="tnb-signup-brand"
-                                    value="<?php echo $row->marca; ?>"
                                     spellcheck="false"
                                     autocapitalize="off"
-                                    placeholder="Ex.: Volkswagen"
+                                    placeholder="Alterar Marca"
                                     required>
                             </div>
                             <div class="form-group">
@@ -48,10 +52,9 @@
                                 <input
                                     type="text"
                                     name="modelo" id="tnb-signup-model"
-                                    value="<?php echo $row->modelo; ?>"
                                     spellcheck="false"
                                     autocapitalize="off"
-                                    placeholder="Ex.: Golf GTI"
+                                    placeholder="Alterar Modelo"
                                     required>
                             </div>
                             <div id="signupStatus" class="status"></div>
@@ -60,7 +63,7 @@
                                 <span class="button-loader"></span>
                             </button>
                             <p class="switch-form" style="font-size: 0.9rem; margin-top: 10px;">
-                                <a id="tnb-login-dropdown-signup-link" href="?page=home&aba=config_models" style="color: #fd0d0d; text-decoration: none;">Cancelar edição</a>
+                                <a id="tnb-login-dropdown-signup-link" href="{{ route('listarModelos') }}" style="color: #fd0d0d; text-decoration: none;">Cancelar edição</a>
                             </p>
                         </form>
                     </div>
@@ -68,8 +71,7 @@
             </div>
         </div>
     </div>
-    <script src="../../assets/vendor/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/js/model-signup.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 

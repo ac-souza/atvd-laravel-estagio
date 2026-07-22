@@ -4,11 +4,11 @@
 <head>
   <title>@yield('titulo', 'Cadastro') - SisVeículos</title>
   <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image" href='/img/car_list.png'>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/users_signup.css') }}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image" href='/img/car_list.png'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/users_signup.css') }}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
@@ -81,7 +81,6 @@
               <p class="switch-form" style="font-size: 0.9rem; margin-top: 10px;">
                 Já possui uma conta? <a id="tnb-login-dropdown-signup-link" href="{{ route('login') }}" style="color: #0d6efd; text-decoration: none;">Entrar</a>
               </p>
-              <div id="signupStatus" class="status"></div>
               <button type="submit">
                 <span class="button-text">Criar Usuário</span>
                 <span class="button-loader"></span>

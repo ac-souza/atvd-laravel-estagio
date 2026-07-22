@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image" href='/img/car_list.png'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/model-signup.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/users_signup.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
@@ -18,62 +18,58 @@
         }
     </style>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand d-inline-flex align-items-center" href="#">
+        <div class="container-fluid">
+            <a class="navbar-brand d-inline-flex align-items-center" href="#">
 
-        <img class="navbar-logo"></img>
+                <img class="navbar-logo"></img>
 
-        <span class="fs-4">SisVeículos</span>
-      </a>
+                <span class="fs-4">SisVeículos</span>
+            </a>
 
-    </div>
-  </nav>
+        </div>
+    </nav>
     <div class="main-content">
         <div class="container mt-5">
             <div class="row justify-content-center">
-                <div class="col-md-6 d-flex justify-content-center">
-                    <div class="card p-4 d-inline-flex align-items-center">
+                <div class="col-md-6">
+                    <div class="card p-4">
                         <h2 class="card-title">Cadastre seu novo usuário</h2>
 
                         <form action=" {{ route('usuarios.store')}} " method="post" id="signupFormElement">
                             @csrf
                             <div class="form-group">
-                                <label>Seu nome</label>
                                 <input
                                     type="text"
                                     name="nome"
                                     spellcheck="false"
                                     autocapitalize="off"
-                                    placeholder="Ex.: Fulano"
+                                    placeholder="Seu Nome"
                                     required>
                             </div>
                             <div class="form-group">
-                                <label>Nome de Usuário</label>
                                 <input
                                     type="text"
                                     name="login"
                                     spellcheck="false"
                                     autocapitalize="off"
-                                    placeholder="Ex.: fulanozinho"
+                                    placeholder="Nome de Usuário"
                                     required>
                             </div>
                             <div class="form-group">
-                                <label>Digite seu email</label>
                                 <input
                                     type="email"
                                     name="email"
                                     spellcheck="false"
                                     autocapitalize="off"
-                                    placeholder="Ex.: fulano@teste.com"
+                                    placeholder="Seu Email"
                                     required>
                             </div>
                             <div class="form-group tnb-signup-password">
-                                <label>Crie sua senha</label>
                                 <input
                                     type="password"
                                     name="senha" id="tnb-login-password"
                                     autocomplete="current-password"
-                                    placeholder="Senha"
+                                    placeholder="Crie sua senha"
                                     required>
                             </div>
                             <button type="submit">
@@ -81,7 +77,7 @@
                                 <span class="button-loader"></span>
                             </button>
                             <p class="switch-form" style="font-size: 0.9rem; margin-top: 10px;">
-                                <a id="tnb-login-dropdown-signup-link" href="{{ route('usuarios.index') }}" style="color: #fd0d0d; text-decoration: none;">Cancelar cadastro</a>
+                                <a id="tnb-login-dropdown-signup-link" href="{{ route('listarUsuarios') }}" style="color: #fd0d0d; text-decoration: none;">Cancelar cadastro</a>
                             </p>
                         </form>
                     </div>
